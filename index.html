@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    </head>
+    <body ng-app="randoApp" ng-cloak>
+
+        <div ng-controller="NavController" ng-cloak>
+            <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+
+                <md-toolbar class="md-theme-indigo">
+                    <h1 class="md-toolbar-tools">Randos</h1>
+                </md-toolbar>
+
+                <md-content layout-margin>
+                    <p>
+                    This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+                    </p>
+                    <md-button ng-click="toggleLeft()" class="md-accent">
+                    Close this Sidenav
+                    </md-button>
+                </md-content>
+
+            </md-sidenav>
+
+            <md-content flex layout-padding>
+                <md-button class="md-raised md-primary" ng-click="toggleLeft()">
+                    ...
+                </md-button>
+            </md-content>
+    
+        </div>
+
+        <div ng-controller="FilterController" ng-cloak>
+
+            <md-input-container>
+                <label>Nom</label>
+                <input name="name" maxlength="50" ng-model="filter_name"/>
+                <div class="hint ng-scope">Rechercher dans le nom de la randonnée</div>
+            </md-input-container>
+                
+            <md-input-container>
+                <label>Massif</label>
+                <md-select ng-model="filter_massif">
+                    <md-option><em>Tous</em></md-option>
+                    <md-option ng-repeat="massif in massifs" ng-value="massif">
+                        {{massif.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Cotation</label>
+                <md-select ng-model="filter_cotation">
+                    <md-option><em>Toutes</em></md-option>
+                    <md-option ng-repeat="cotation in cotations" ng-value="cotation">
+                        {{ cotation.label }}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+              <div flex="10" layout layout-align="center center">
+                <span class="md-body-1">Dénivelé</span>
+              </div>
+              <md-slider class="md-primary" md-discrete ng-model="filter_denivele" step="100" min="300" max="2000" aria-label="rating">
+              </md-slider>
+            </md-input-container>
+
+            <md-input-container>
+              <div flex="10" layout layout-align="center center">
+                <span class="md-body-1">Durée</span>
+              </div>
+              <md-slider class="md-primary" flex md-discrete ng-model="filter_duration" step="10" min="30" max="240" aria-label="rating">
+              </md-slider>
+            </md-input-container>
+        </div>
+
+        <randos-list></randos-list>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+      
+        <!-- Angular Material Library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+        <script src="app.module.js"></script>
+        <script src="randos-list/randos-list.module.js"></script>
+        <script src="randos-list/randos-list.component.js"></script>
+    </body>
+</html>

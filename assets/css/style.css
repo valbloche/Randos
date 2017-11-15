@@ -1,0 +1,83 @@
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -1808px 0
+    }
+    100%{
+        background-position: 1808px 0
+    }
+}
+
+.animated-background {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 100% 96px;
+    height: 96px;
+    position: relative;
+}
+
+.hint{
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: -7px;
+    font-size: 12px;
+    line-height: 0px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    color: grey;
+}
+
+md-input-container input.md-input[ng-model="filter_name"]{
+    width:250px;
+}
+
+md-slider[ng-model="filter_duration"] .md-slider-wrapper{
+    width:350px;
+}
+
+md-slider[ng-model="filter_denivele"] .md-slider-wrapper{
+    width:350px;
+}
+
+button.md-fab.md-button-cotation, button.md-fab.md-button-massif{
+    width:40px;
+    height:40px;
+    line-height: 40px;
+}
+button.md-fab.md-button-cotation.T1{
+    background-color: rgb(143, 184, 250);
+}
+button.md-fab.md-button-cotation.T2{
+    background-color: rgb(68,138,255);
+}
+button.md-fab.md-button-cotation.T3{
+    background-color: rgb(22, 93, 207);
+}
+button.md-fab.md-button-massif{
+    background-color:whitesmoke;
+    background-size: 31px;
+    background-position-x: 5px;
+    background-repeat: no-repeat;
+}
+button.md-fab.md-button-massif.bauges{
+    background-image: url(../images/bauges.svg);
+}
+button.md-fab.md-button-massif.chartreuse{
+    background-image: url(../images/chartreuse.png);
+    background-position-x: 4px;
+}
+button.md-fab.md-button-massif.aravis{
+    background-image: url(../images/aravis.png);
+    background-size: 170px;
+    background-position: -72px 7px;
+}
+button.md-fab.md-button-massif:not([disabled]):hover{
+    background-color:rgb(0, 147, 111);
+}
+button.md-fab.md-button-massif.aravis:not([disabled]):hover{
+    background-color:rgb(0, 89, 65);
+}

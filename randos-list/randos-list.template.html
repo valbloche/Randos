@@ -1,0 +1,32 @@
+<md-list flex ng-show="$ctrl.randos">
+    
+    <md-list-item class="md-3-line" ng-repeat="rando in $ctrl.randos | filter: $ctrl.applyFilters" ng-click="$ctrl.clickOnList(rando)">
+        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{rando.who}}" />
+        <div class="md-list-item-text" layout="column">
+            <h3>{{ rando.name }}</h3>
+            <h4>Massif : {{ rando.massif.name }}</h4>
+            <p>Denivelé : + {{ rando.denivele }} mètres</p>
+            <p>Durée : {{ rando.total_duration | timeformat:'mm':'hh heures mm minutes' }}
+                <md-tooltip md-direction="bottom">
+                    Montée : {{rando.climb_duration| timeformat:'mm':'hh heures mm minutes' }}<br/>
+                    Descente : {{rando.descent_duration| timeformat:'mm':'hh heures mm minutes' }}
+                </md-tooltip>
+            </p>
+            <md-button class="md-fab md-button-massif {{ rando.massif.name | lowercase }}">
+                    <md-tooltip md-direction="bottom">{{rando.massif.name}}</md-tooltip>
+                </md-button>
+            <md-button class="md-fab md-button-cotation {{ rando.cotation.label }}">{{ rando.cotation.label }}
+                <md-tooltip md-direction="bottom">{{rando.cotation.short_description}}</md-tooltip>
+            </md-button>
+        </div>
+    </md-list-item>
+</md-list>
+
+<md-list flex ng-hide="$ctrl.randos" class="animated-background">
+    <md-list-item class="md-3-line">
+        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{rando.who}}" />
+        <div class="md-list-item-text" layout="column">
+            <h3>{{ rando.nom }}</h3>
+        </div>
+    </md-list-item>
+</md-list>
