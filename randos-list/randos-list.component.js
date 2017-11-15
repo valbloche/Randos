@@ -24,7 +24,9 @@ angular.module("randosList").component('randosList', {
 
         $http.post(randosURL, JSON.stringify(randosAskedStructure)).then( (response) => {
             self.randos = response.data.data.Randos;
-        })
+        }).catch( (e) => {
+            console.error("Les randonnées n'ont pas pu être récupérées")
+        } )
 
         self.clickOnList = function(rando){
             alert(rando.nom)

@@ -7,6 +7,15 @@
     }
 }
 
+div[ng-controller="FilterController"]{
+    text-align: center;
+    background-color: #03a9f4;
+}
+
+div[ng-controller="NavController"] md-content h1{
+    display:inline;
+}
+
 .animated-background {
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
@@ -28,7 +37,7 @@
     font-size: 12px;
     line-height: 0px;
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
-    color: grey;
+    color: #e8e8e8;
 }
 
 md-input-container input.md-input[ng-model="filter_name"]{
@@ -75,9 +84,23 @@ button.md-fab.md-button-massif.aravis{
     background-size: 170px;
     background-position: -72px 7px;
 }
+button.md-fab.md-button-massif.belledone{
+    background-image: url(../images/belledone.png);
+    background-size: 54px;
+    background-position: -7px 5px;
+}
+button.md-fab.md-button-massif.maurienne{
+    background-image: url(../images/maurienne.png);
+}
+button.md-fab.md-button-massif.tarentaise{
+    background-image: url(../images/tarentaise.png);
+}
 button.md-fab.md-button-massif:not([disabled]):hover{
     background-color:rgb(0, 147, 111);
 }
 button.md-fab.md-button-massif.aravis:not([disabled]):hover{
     background-color:rgb(0, 89, 65);
+}
+button.md-fab.md-button-massif.belledone:not([disabled]):hover{
+    background-color:rgb(146, 191, 31);
 }

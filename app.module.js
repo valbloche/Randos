@@ -27,9 +27,13 @@ angular.module("randoApp" , ['randosList', 'ngMaterial'])
 
     $http.post(randosURL, JSON.stringify(cotationsAskedStructure)).then( (response) => {
         $scope.cotations = response.data.data.Cotations;
-    })
+    }).catch( (e) => {
+        console.error("Les cotations n'ont pas pu être récupérées")
+    } )
 
     $http.post(randosURL, JSON.stringify(massifsAskedStructure)).then( (response) => {
         $scope.massifs = response.data.data.Massifs;
-    })
+    }).catch( (e) => {
+        console.error("Les massifs n'ont pas pu être récupérées")
+    } )
 });
