@@ -1,0 +1,66 @@
+<md-toolbar layout="row" layout-align="left center">
+    <h2><md-button class="md-icon-button" ng-click="$ctrl.returnToList()" aria-label="Retour">
+            <i class="material-icons">&#xE5C4;</i>
+        </md-button>
+    </h2>
+    <h1 class="md-toolbar-tools">{{ $ctrl.rando.name }}</h1>
+    <h1 class="md-toolbar-tools"><i class="material-icons">&#xE6E1;</i>&nbsp;{{ $ctrl.rando.denivele }} mètres</h1>
+    <h1 class="md-toolbar-tools duration" layout="column" layout-align="center center">
+        <div layout="row">
+            <i class="material-icons">&#xE425;</i>
+            <span>&nbsp;{{ $ctrl.rando.total_duration| timeformat:'mm':'hh heures mm minutes' }}</span>
+        </div>
+        <div layout="row" class="duration_detail">
+            <div layout="row" layout="left center">
+                <i class="material-icons">&#xE8E5;</i>
+                <span>&nbsp;{{ $ctrl.rando.climb_duration| timeformat:'mm':'hh heures mm minutes' }}</span>
+            </div>
+            <div layout="row" layout="left center">
+                <i class="material-icons">&#xE8E3;</i>
+                <span>&nbsp;{{ $ctrl.rando.descent_duration| timeformat:'mm':'hh heures mm minutes' }}</span>
+            </div>
+        </div>
+    </h1>
+</md-toolbar>
+<md-content layout-xs="column" layout="row">
+        
+    <div flex-xs flex-gt-xs="70" layout="column">
+
+    </div>
+
+    <div flex-xs flex-gt-xs="30" layout="column">
+        <md-card md-theme-watch>
+            <md-card-title>
+                <md-card-title-text layout="row" layout-align="left center">
+                    <md-button class="md-icon-button md-raised" layout-align="center center"><i class="material-icons">&#xE14F;</i></md-button>
+                    <span class="md-headline">&nbsp;Mes parcours</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout="row" layout-align="end">
+                <md-button class="md-icon-button md-raised md-primary"><i class="material-icons">&#xE145;</i></md-button>
+            </md-card-content>
+        </md-card>
+        <md-card md-theme-watch>
+            <md-card-title >
+                <md-card-title-text layout="row" layout-align="left center">
+                    <md-button class="md-fab md-button-cotation {{ $ctrl.rando.cotation.label }}">{{ $ctrl.rando.cotation.label }}</md-button>
+                    <span class="md-headline">&nbsp;{{ $ctrl.rando.cotation.short_description }}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>{{ $ctrl.rando.cotation.long_description }}</p>
+            </md-card-content>
+        </md-card>
+        <md-card md-theme-watch>
+            <md-card-title >
+                <md-card-title-text layout="row" layout-align="left center">
+                    <md-button class="md-fab md-button-massif {{ $ctrl.rando.massif.name | lowercase }}"></md-button>
+                    <span class="md-headline">&nbsp;{{ $ctrl.rando.massif.name }}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>{{ $ctrl.rando.massif.description }}</p>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>

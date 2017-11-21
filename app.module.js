@@ -1,7 +1,4 @@
-angular.module("randoApp" , ['randosList', 'ngMaterial'])
-.config( ($mdThemingProvider) => {
-    $mdThemingProvider.theme('default').primaryPalette("light-blue").accentPalette('blue');;
-} )
+angular.module("randoApp" , ['randosList', 'randoDetail', 'ngMaterial', 'ngRoute'])
 .controller('NavController', ($scope, $timeout, $mdSidenav) => {
     $scope.toggleLeft = () => {
         $mdSidenav("left").toggle();

@@ -1,7 +1,58 @@
+<div ng-controller="FilterController" ng-cloak>
+    <md-input-container >
+        <label>Nom</label>
+        <input name="name" maxlength="50" ng-model="filter_name"/>
+        <div class="hint ng-scope">Rechercher dans le nom de la randonnée</div>
+    </md-input-container>
+        
+    <md-input-container>
+        <label>Massif</label>
+        <md-select ng-model="filter_massif">
+            <md-option><em>Tous</em></md-option>
+            <md-option ng-repeat="massif in massifs" ng-value="massif">
+                {{massif.name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container>
+        <label>Cotation</label>
+        <md-select ng-model="filter_cotation">
+            <md-option><em>Toutes</em></md-option>
+            <md-option ng-repeat="cotation in cotations" ng-value="cotation">
+                {{ cotation.label }}
+            </md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container>
+        <div flex="10" layout layout-align="center center">
+        <span class="md-body-1">Dénivelé</span>
+        </div>
+        <md-slider class="md-primary" md-discrete ng-model="filter_denivele" step="100" min="300" max="2000" aria-label="rating">
+        </md-slider>
+    </md-input-container>
+
+    <md-input-container>
+        <div flex="10" layout layout-align="center center">
+        <span class="md-body-1">Durée</span>
+        </div>
+        <md-slider class="md-primary" flex md-discrete ng-model="filter_duration" step="10" min="30" max="240" aria-label="rating">
+        </md-slider>
+    </md-input-container>
+</div>
+
 <md-list flex ng-show="$ctrl.randos">
     
-    <md-list-item class="md-3-line" ng-repeat="rando in $ctrl.randos | filter: $ctrl.applyFilters" ng-click="$ctrl.clickOnList(rando)">
-        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{rando.who}}" />
+    <md-list-item class="md-3-line" ng-repeat="rando in $ctrl.randos | filter: $ctrl.applyFilters" ng-href="/#!/{{rando.id}}">
+        <div class="chips" layout="column">
+            <md-button class="md-fab md-button-massif {{ rando.massif.name | lowercase }}">
+                    <md-tooltip md-direction="bottom">{{rando.massif.name}}</md-tooltip>
+                </md-button>
+            <md-button class="md-fab md-button-cotation {{ rando.cotation.label }}">{{ rando.cotation.label }}
+                <md-tooltip md-direction="bottom">{{rando.cotation.short_description}}</md-tooltip>
+            </md-button>
+        </div>
         <div class="md-list-item-text" layout="column">
             <h3>{{ rando.name }}</h3>
             <h4>Massif : {{ rando.massif.name }}</h4>
@@ -12,12 +63,6 @@
                     Descente : {{rando.descent_duration| timeformat:'mm':'hh heures mm minutes' }}
                 </md-tooltip>
             </p>
-            <md-button class="md-fab md-button-massif {{ rando.massif.name | lowercase }}">
-                    <md-tooltip md-direction="bottom">{{rando.massif.name}}</md-tooltip>
-                </md-button>
-            <md-button class="md-fab md-button-cotation {{ rando.cotation.label }}">{{ rando.cotation.label }}
-                <md-tooltip md-direction="bottom">{{rando.cotation.short_description}}</md-tooltip>
-            </md-button>
         </div>
     </md-list-item>
 </md-list>

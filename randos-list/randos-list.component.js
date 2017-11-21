@@ -1,6 +1,6 @@
 angular.module("randosList").component('randosList', {
     templateUrl: "randos-list/randos-list.template.html",
-    controller: function RandosListController($http){
+    controller: function RandosListController($http, $location){
         var self = this;
         var parent = self.$parent;
         var randosURL = "http://localhost:4000/graphql"
@@ -28,8 +28,8 @@ angular.module("randosList").component('randosList', {
             console.error("Les randonnées n'ont pas pu être récupérées")
         } )
 
-        self.clickOnList = function(rando){
-            alert(rando.nom)
+        self.clickOnRando = function(randoID){
+            $location.url("http://localhost:7400/1")
         }
         
         self.getFiltersScope = () => {
@@ -51,5 +51,7 @@ angular.module("randosList").component('randosList', {
             }
         }
 
-    }
+    },
+}).directive("filters_enabled", () => {
+    return "blablabla"
 })

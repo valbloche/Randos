@@ -15,6 +15,7 @@
             <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
 
                 <md-toolbar class="md-theme-indigo">
+                    
                     <h1 class="md-toolbar-tools">Randos</h1>
                 </md-toolbar>
 
@@ -33,68 +34,39 @@
                 <md-button class="md-raised md-primary" ng-click="toggleLeft()">
                     ...
                 </md-button>
+                <div class="clouds">
+                <i class="material-icons cloud" style="top: 20px">&#xE2BD;</i>
+                <i class="material-icons cloud cloud1" style="top: 10px;">&#xE2BD;</i>
+                <i class="material-icons cloud cloud2" style="top: 26px;">&#xE2BD;</i>
+                </div>
+            
+                <i class="material-icons" style="
+                font-size: 50px;
+                float:left;
+                color: #03a9f4;
+        "></i>
                 <h1>Randos</h1>
             </md-content>
         </div>
 
-        <div ng-controller="FilterController" ng-cloak>
+        <div ng-view></div>
 
-            <md-input-container >
-                <label>Nom</label>
-                <input name="name" maxlength="50" ng-model="filter_name"/>
-                <div class="hint ng-scope">Rechercher dans le nom de la randonnée</div>
-            </md-input-container>
-                
-            <md-input-container>
-                <label>Massif</label>
-                <md-select ng-model="filter_massif">
-                    <md-option><em>Tous</em></md-option>
-                    <md-option ng-repeat="massif in massifs" ng-value="massif">
-                        {{massif.name}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 
-            <md-input-container>
-                <label>Cotation</label>
-                <md-select ng-model="filter_cotation">
-                    <md-option><em>Toutes</em></md-option>
-                    <md-option ng-repeat="cotation in cotations" ng-value="cotation">
-                        {{ cotation.label }}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-
-            <md-input-container>
-              <div flex="10" layout layout-align="center center">
-                <span class="md-body-1">Dénivelé</span>
-              </div>
-              <md-slider class="md-primary" md-discrete ng-model="filter_denivele" step="100" min="300" max="2000" aria-label="rating">
-              </md-slider>
-            </md-input-container>
-
-            <md-input-container>
-              <div flex="10" layout layout-align="center center">
-                <span class="md-body-1">Durée</span>
-              </div>
-              <md-slider class="md-primary" flex md-discrete ng-model="filter_duration" step="10" min="30" max="240" aria-label="rating">
-              </md-slider>
-            </md-input-container>
-        </div>
-
-        <randos-list></randos-list>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.min.js"></script>
       
         <!-- Angular Material Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
         <script src="app.module.js"></script>
+        <script src="app.config.js"></script>
+
         <script src="randos-list/randos-list.module.js"></script>
         <script src="randos-list/randos-list.component.js"></script>
+        <script src="rando-detail/rando-detail.module.js"></script>
+        <script src="rando-detail/rando-detail.component.js"></script>
     </body>
 </html>
