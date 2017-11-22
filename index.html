@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="node_modules/angular-input-stars/angular-input-stars.css">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
@@ -15,7 +16,6 @@
             <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
 
                 <md-toolbar class="md-theme-indigo">
-                    
                     <h1 class="md-toolbar-tools">Randos</h1>
                 </md-toolbar>
 
@@ -31,22 +31,42 @@
             </md-sidenav>
 
             <md-content flex layout-padding>
-                <md-button class="md-raised md-primary" ng-click="toggleLeft()">
-                    ...
-                </md-button>
-                <div class="clouds">
-                <i class="material-icons cloud" style="top: 20px">&#xE2BD;</i>
-                <i class="material-icons cloud cloud1" style="top: 10px;">&#xE2BD;</i>
-                <i class="material-icons cloud cloud2" style="top: 26px;">&#xE2BD;</i>
+                <div flex style="float:left">
+                    <md-button class="md-raised md-primary" ng-click="toggleLeft()">
+                        ...
+                    </md-button>
+                    <div class="clouds">
+                    <i class="material-icons cloud" style="top: 20px">&#xE2BD;</i>
+                    <i class="material-icons cloud cloud1" style="top: 10px;">&#xE2BD;</i>
+                    <i class="material-icons cloud cloud2" style="top: 26px;">&#xE2BD;</i>
+                    </div>
+                    <i class="material-icons" style="
+                    font-size: 50px;
+                    float:left;
+                    color: #03a9f4;
+                    "></i>
                 </div>
-            
-                <i class="material-icons" style="
-                font-size: 50px;
-                float:left;
-                color: #03a9f4;
-        "></i>
-                <h1>Randos</h1>
+                <div flex layout="row" layout-align="end center">
+                        <span>Thèmes&nbsp;</span>
+                        <md-button class="md-icon-button md-raised" style="color:rgb(3, 169, 244)">
+                            <i class="material-icons">&#xEB3B;</i>
+                            <md-tooltip>Hiver</md-tooltip>
+                        </md-button>
+                        <md-button class="md-icon-button" style="color:rgb(146, 191, 31)">
+                            <i class="material-icons">&#xE3E3;</i>
+                            <md-tooltip>Printemps</md-tooltip>
+                        </md-button>
+                        <md-button class="md-icon-button" style="color:rgb(250, 211, 19)">
+                            <i class="material-icons">&#xE430;</i>
+                            <md-tooltip>Été</md-tooltip>
+                        </md-button>
+                        <md-button class="md-icon-button" style="color:rgb(250, 169, 19)">
+                            <i class="material-icons">&#xE3DD;</i>
+                            <md-tooltip>Automne</md-tooltip>
+                        </md-button>
+                </div>
             </md-content>
+
         </div>
 
         <div ng-view></div>
@@ -60,6 +80,9 @@
       
         <!-- Angular Material Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/angular-input-stars/angular-input-stars.js"></script>
 
         <script src="app.module.js"></script>
         <script src="app.config.js"></script>

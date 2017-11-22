@@ -10,8 +10,11 @@
   "license": "ISC",
   "devDependencies": {
     "angular": "^1.6.6",
+    "angular-input-stars": "^1.5.5",
     "angular-mocks": "^1.6.6",
     "angular-route": "^1.6.6",
-    "express": "^4.16.2"
+    "blurry-image-load": "0.0.0",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1"
   }
 }

@@ -1,4 +1,4 @@
-<md-toolbar layout="row" layout-align="left center">
+<md-toolbar layout="row" layout-align="left center" id="popupContainer">
     <h2><md-button class="md-icon-button" ng-click="$ctrl.returnToList()" aria-label="Retour">
             <i class="material-icons">&#xE5C4;</i>
         </md-button>
@@ -21,11 +21,24 @@
             </div>
         </div>
     </h1>
+    <div class="md-toolbar-tools" layout="column" layout="center center" style="font-size:0.8em">
+            <div layout="row" layout-align="left center">
+                <i class="material-icons sun">&#xE430;</i>&nbsp;
+                <span>{{ $ctrl.rando.weather.city }} :&nbsp;</span>
+                <span>{{ $ctrl.rando.weather.description }}</span>
+            </div>
+        <div layout="row">
+            <span>{{ $ctrl.rando.weather.temperature }}°&nbsp;</span>
+            <span>{{ $ctrl.rando.weather.humidity }}%&nbsp;</span>
+            <span>{{ $ctrl.rando.weather.wind.speed }}km/h&nbsp;</span>
+            <span>{{ $ctrl.rando.weather.wind.deg }}°</span>
+        </div>
+    </div>
 </md-toolbar>
 <md-content layout-xs="column" layout="row">
         
-    <div flex-xs flex-gt-xs="70" layout="column">
-
+    <div flex-xs flex-gt-xs="70" layout="column" layout-padding>
+        <img class="image-blur" src="https://www.legrandbornand.com/medias/images/prestations/105815-lac_de_peyre.jpg" data-large="https://www.legrandbornand.com/medias/images/prestations/105815-lac_de_peyre.jpg" style="width:50%"/>
     </div>
 
     <div flex-xs flex-gt-xs="30" layout="column">
@@ -33,11 +46,14 @@
             <md-card-title>
                 <md-card-title-text layout="row" layout-align="left center">
                     <md-button class="md-icon-button md-raised" layout-align="center center"><i class="material-icons">&#xE14F;</i></md-button>
-                    <span class="md-headline">&nbsp;Mes parcours</span>
+                    <span class="md-headline">&nbsp;Mes passages</span>
                 </md-card-title-text>
             </md-card-title>
+            <md-card-content>
+                <p>Aucun passage enregistré</p>
+            </md-card-content>
             <md-card-content layout="row" layout-align="end">
-                <md-button class="md-icon-button md-raised md-primary"><i class="material-icons">&#xE145;</i></md-button>
+                    <md-button class="md-icon-button md-raised md-primary" ng-click="$ctrl.showPrompt($ctrl.rando)"><i class="material-icons">&#xE145;</i></md-button>
             </md-card-content>
         </md-card>
         <md-card md-theme-watch>
@@ -50,6 +66,12 @@
             <md-card-content>
                 <p>{{ $ctrl.rando.cotation.long_description }}</p>
             </md-card-content>
+            <md-card-content layout="row" layout-align="end">
+                <md-button class="md-icon-button" style="color:#989898">
+                    <i class="material-icons">&#xE5D3;</i>
+                    <md-tooltip>Afficher les randonnées de cette difficulté</md-tooltip>
+                </md-button>
+            </md-card-content>
         </md-card>
         <md-card md-theme-watch>
             <md-card-title >
@@ -61,6 +83,28 @@
             <md-card-content>
                 <p>{{ $ctrl.rando.massif.description }}</p>
             </md-card-content>
+            <md-card-content layout="row" layout-align="end">
+                <md-button class="md-icon-button" style="color:#989898">
+                    <i class="material-icons">&#xE5D3;</i>
+                    <md-tooltip>Afficher les randonnées de ce massif</md-tooltip>
+                </md-button>
+            </md-card-content>
         </md-card>
     </div>
 </md-content>
+
+<div style="visibility: hidden">
+<div class="md-dialog-container" id="myDialog">
+  <md-dialog layout-padding>
+    <h2>Pre-Rendered Dialog</h2>
+    <p>
+      This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
+      template on each opening.
+      <br/><br/>
+      The Dialog Element is a static element in the DOM, which is just visually hidden.<br/>
+      Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
+      we restore the element back into its old DOM position.
+    </p>
+  </md-dialog>
+</div>
+</div>

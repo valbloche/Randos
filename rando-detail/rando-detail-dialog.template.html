@@ -1,0 +1,25 @@
+<md-dialog>
+    <md-toolbar layout-align="center center">{{date | date:"d/MM/yyyy" }}</md-toolbar>
+    <md-dialog-content layout-padding>
+        <h2 class="md-title">{{rando.name}}</h2>
+        <div>Bravo, tu as monté {{rando.denivele}} mètres.</div>
+        <div class="md-dialog-content">
+            <md-input-container class="md-block">
+                <label>Difficulté</label>
+                <input-stars max="5" ng-model="difficulty"></input-stars>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Présence de zanimaux</label>
+                <input-stars max="5" ng-model="animals_density"></input-stars>
+            </md-input-container>
+        <md-input-container class="md-block">
+            <label>Comment ça s'est passé ?</label>
+            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus placeholder="J'ai frôlé la mort à multiples reprises"></textarea>
+        </md-input-container>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-accent md-cancel-button" ng-click="cancel()">Je ne veux plus</md-button>
+        <md-button class="md-primary md-confirm-button" ng-click="hide()">Ça s'est passé comme ça</md-button>
+    </md-dialog-actions>
+</md-dialog>

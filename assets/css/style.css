@@ -7,25 +7,37 @@
     }
 }
 
+@keyframes infiniteRotate{
+    0%{
+        transform: rotate(0deg)
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+}
+
 @keyframes cloudCrossing{
     0%{
         color:darkgrey;
-        left: 0px;
         opacity:0;
     }
     30%{
         color:lightgrey;
-        left:40px;
+        transform: translateX(5px);
         opacity:1;
+    }
+    55%{
+        color:rgb(238, 238, 238);
+        transform: translateX(10px);
+        opacity:0.9;
     }
     80%{
         color:whitesmoke;
-        left:60px;
-        opacity:0.7;
+        transform: translateX(15px);
+        opacity:0.8;
     }
     100%{
-        left:70px;
-        opacity:0.8;
+        transform: translateX(25px);
     }
 }
 
@@ -97,7 +109,7 @@ div.clouds i{
     animation-duration: 7s;
 }
 .cloud.cloud2{
-    animation-duration: 8s;
+    animation-duration: 9s;
 }
 
 .hint{
@@ -201,4 +213,9 @@ button.md-fab.md-button-massif.tarentaise:not([disabled]):hover{
 }
 .md-toolbar-tools.duration .duration_detail div:first-child{
     margin-right:0.7em;
+}
+
+.sun{
+    color:rgb(250, 211, 19);
+    animation: infiniteRotate 6s linear infinite;
 }
