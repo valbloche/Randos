@@ -1,1 +1,1 @@
-angular.module("randoDetail", [])
+angular.module("randoDetail", ['rando-list.service', 'weather', 'angular-input-stars', 'ngMap'])

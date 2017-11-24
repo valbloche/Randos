@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <title></title>
+        <title>Angular Randos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
-    </head>
+    
     <body ng-app="randoApp" ng-cloak>
 
         <div ng-controller="NavController" ng-cloak>
@@ -40,27 +40,26 @@
                     <i class="material-icons cloud cloud1" style="top: 10px;">&#xE2BD;</i>
                     <i class="material-icons cloud cloud2" style="top: 26px;">&#xE2BD;</i>
                     </div>
-                    <i class="material-icons" style="
+                    <i class="material-icons md-icon md-primary" style="
                     font-size: 50px;
                     float:left;
-                    color: #03a9f4;
                     "></i>
                 </div>
-                <div flex layout="row" layout-align="end center">
+                <div flex layout="row" layout-align="end center" class="themeChooser">
                         <span>Thèmes&nbsp;</span>
-                        <md-button class="md-icon-button md-raised" style="color:rgb(3, 169, 244)">
+                        <md-button ng-class="(themeCookie=='winter') ? 'md-raised' : ''" class="md-icon-button winter" style="color:rgb(3, 169, 244)" ng-click="changeTheme('winter')">
                             <i class="material-icons">&#xEB3B;</i>
                             <md-tooltip>Hiver</md-tooltip>
                         </md-button>
-                        <md-button class="md-icon-button" style="color:rgb(146, 191, 31)">
+                        <md-button ng-class="(themeCookie=='spring') ? 'md-raised' : ''" class="md-icon-button spring" style="color:rgb(146, 191, 31)" ng-click="changeTheme('spring')">
                             <i class="material-icons">&#xE3E3;</i>
                             <md-tooltip>Printemps</md-tooltip>
                         </md-button>
-                        <md-button class="md-icon-button" style="color:rgb(250, 211, 19)">
+                        <md-button ng-class="(themeCookie=='summer') ? 'md-raised' : ''" class="md-icon-button summer" style="color:rgb(250, 211, 19)" ng-click="changeTheme('summer')">
                             <i class="material-icons">&#xE430;</i>
                             <md-tooltip>Été</md-tooltip>
                         </md-button>
-                        <md-button class="md-icon-button" style="color:rgb(250, 169, 19)">
+                        <md-button ng-class="(themeCookie=='autumn') ? 'md-raised' : ''" class="md-icon-button autumn" style="color:rgb(250, 169, 19)"  ng-click="changeTheme('autumn')">
                             <i class="material-icons">&#xE3DD;</i>
                             <md-tooltip>Automne</md-tooltip>
                         </md-button>
@@ -81,14 +80,23 @@
         <!-- Angular Material Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/ngmap/build/scripts/ng-map.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+        <!--<script src="node_modules/jquery/dist/jquery.min.js"></script>-->
+        <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
         <script src="node_modules/angular-input-stars/angular-input-stars.js"></script>
 
         <script src="app.module.js"></script>
         <script src="app.config.js"></script>
 
+        <script src="randos-list/service/randos-list.service.js"></script>
         <script src="randos-list/randos-list.module.js"></script>
         <script src="randos-list/randos-list.component.js"></script>
+
+        <script src="rando-detail/weather/weather.module.js"></script>
+        <script src="rando-detail/weather/weather.service.js"></script>
+
         <script src="rando-detail/rando-detail.module.js"></script>
         <script src="rando-detail/rando-detail.component.js"></script>
     </body>

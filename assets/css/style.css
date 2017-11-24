@@ -8,10 +8,10 @@
 }
 
 @keyframes infiniteRotate{
-    0%{
+    from{
         transform: rotate(0deg)
     }
-    100%{
+    to{
         transform: rotate(360deg)
     }
 }
@@ -41,34 +41,33 @@
     }
 }
 
-div[ng-controller="FilterController"]{
+md-toolbar[ng-controller="FilterController"]{
     text-align: center;
-    background-color: #03a9f4;
 }
 
 md-input-container.md-input-focused label:not(.md-no-float){
     color:whitesmoke;
 }
 
-div[ng-controller="FilterController"] md-slider.md-default-theme.md-min[md-discrete] .md-thumb:after, 
-div[ng-controller="FilterController"] md-slider.md-min[md-discrete] .md-thumb:after,
-div[ng-controller="FilterController"] md-slider.md-default-theme.md-primary .md-thumb:after, 
-div[ng-controller="FilterController"] md-slider.md-primary .md-thumb:after{
+md-toolbar[ng-controller="FilterController"] md-slider.md-default-theme.md-min[md-discrete] .md-thumb:after, 
+md-toolbar[ng-controller="FilterController"] md-slider.md-min[md-discrete] .md-thumb:after,
+md-toolbar[ng-controller="FilterController"] md-slider.md-default-theme.md-primary .md-thumb:after, 
+md-toolbar[ng-controller="FilterController"] md-slider.md-primary .md-thumb:after{
     background-color:whitesmoke;
 }
-div[ng-controller="FilterController"] md-slider.md-primary .md-sign
+md-toolbar[ng-controller="FilterController"] md-slider.md-primary .md-sign
 {
     background-color:rgb(22, 93, 207);
 }
-div[ng-controller="FilterController"] md-slider.md-primary .md-sign:after{
+md-toolbar[ng-controller="FilterController"] md-slider.md-primary .md-sign:after{
     border-top-color:rgb(22, 93, 207);
 }
-div[ng-controller="FilterController"] md-slider .md-sign .md-thumb-text{
+md-toolbar[ng-controller="FilterController"] md-slider .md-sign .md-thumb-text{
     color:whitesmoke;
     font-size:10px;
 }
 
-div[ng-controller="FilterController"] md-slider.md-primary .md-track.md-track-fill{
+md-toolbar[ng-controller="FilterController"] md-slider.md-primary .md-track.md-track-fill{
     background:whitesmoke;
 }
 
@@ -202,6 +201,9 @@ button.md-fab.md-button-massif.tarentaise:not([disabled]):hover{
     background-color:white;
 }
 
+.md-toolbar-tools{
+    color:whitesmoke;
+}
 
 .md-toolbar-tools.duration .duration_detail{
     margin-top:0.8em;
@@ -218,4 +220,42 @@ button.md-fab.md-button-massif.tarentaise:not([disabled]):hover{
 .sun{
     color:rgb(250, 211, 19);
     animation: infiniteRotate 6s linear infinite;
+}
+
+md-dialog .md-dialog-content{
+    padding:0px;
+    margin:0;
+}
+
+md-dialog-content, md-dialog-content label
+{
+    color:rgba(0,0,0,0.54);
+}
+md-input-container.star-input-container{
+    margin:0px;
+}
+md-input-container.star-input-container label{
+    font-size:0.8em;
+    margin-bottom: 20px;
+    color:rgba(0,0,0,0.54);
+}
+ul.angular-input-stars li i, md-dialog-content .md-input-focused label:not(.md-no-float){
+    color:rgb(3,169,244);
+}
+
+md-list.rando_passages md-list-item.md-3-line:before, md-list.rando_passages md-list-item.md-3-line>.md-no-style:before, 
+md-list.rando_passages md-list-item.md-3-line, md-list.rando_passages md-list-item.md-3-line>.md-no-style{
+    min-height:auto;
+    height:auto;
+}
+md-list.rando_passages md-list-item:first-child div:first-child{
+    margin-top:0px;
+}
+md-list.rando_passages md-list-item div.md-list-item-text{
+    margin-bottom:0.7em;
+}
+
+md-list.rando_passages div.passage_ratings:not(:last-child)
+{    
+    margin-right:0.8em;
 }

@@ -22,23 +22,27 @@
         </div>
     </h1>
     <div class="md-toolbar-tools" layout="column" layout="center center" style="font-size:0.8em">
-            <div layout="row" layout-align="left center">
+        <div>
+            <div layout="row" layout-align="center center">
                 <i class="material-icons sun">&#xE430;</i>&nbsp;
                 <span>{{ $ctrl.rando.weather.city }} :&nbsp;</span>
                 <span>{{ $ctrl.rando.weather.description }}</span>
             </div>
-        <div layout="row">
-            <span>{{ $ctrl.rando.weather.temperature }}°&nbsp;</span>
-            <span>{{ $ctrl.rando.weather.humidity }}%&nbsp;</span>
-            <span>{{ $ctrl.rando.weather.wind.speed }}km/h&nbsp;</span>
-            <span>{{ $ctrl.rando.weather.wind.deg }}°</span>
+            <div layout="row" layout-align="center center" style="margin-top:0.5em">
+                    <div layout="row" layout-align="left center"><i class="material-icons">&#xE8D6;</i>&nbsp;{{ $ctrl.rando.weather.temperature }}°&nbsp;</div>
+                    <div layout="row" layout-align="left center"><i class="material-icons">&#xE91C;</i>&nbsp;{{ $ctrl.rando.weather.humidity }}%&nbsp;</div>
+                    <div layout="row" layout-align="left center"><i class="material-icons">&#xE332;</i>&nbsp;{{ $ctrl.rando.weather.wind.speed }}km/h&nbsp;</div>
+                    <div layout="row" layout-align="left center" ng-show="$ctrl.rando.weather.wind.deg">{{ $ctrl.rando.weather.wind.deg }}°</div>
+            </div>
         </div>
     </div>
 </md-toolbar>
 <md-content layout-xs="column" layout="row">
-        
     <div flex-xs flex-gt-xs="70" layout="column" layout-padding>
-        <img class="image-blur" src="https://www.legrandbornand.com/medias/images/prestations/105815-lac_de_peyre.jpg" data-large="https://www.legrandbornand.com/medias/images/prestations/105815-lac_de_peyre.jpg" style="width:50%"/>
+        <div layout="row">
+            <img class="image-blur" src="https://www.legrandbornand.com/medias/images/prestations/105815-lac_de_peyre.jpg" data-large="https://www.legrandbornand.com/medias/images/prestations/105815-lac_de_peyre.jpg" style="width:50%; height:50%"/>
+            <ng-map flex-xs flex-gt-xs="50" center="{{$ctrl.rando.gps[0]}},{{$ctrl.rando.gps[1]}}" zoom="13"></ng-map>
+        </div>
     </div>
 
     <div flex-xs flex-gt-xs="30" layout="column">
@@ -50,10 +54,38 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-content>
-                <p>Aucun passage enregistré</p>
+                <p ng-hide="$ctrl.rando.passages.length">Aucun passage enregistré</p>
+                <md-list class="rando_passages" ng-show="$ctrl.rando.passages.length">
+                    <md-list-item class="md-3-line" ng-repeat="passage in $ctrl.rando.passages" ng-click="$ctrl.showPrompt($ctrl.rando, passage);">
+                        <div class="md-list-item-text" layout="column">
+                            <div layout="row" layout-align="left center">
+                            <h3 layout="row" layout-align="left center">
+                                <span>{{passage.date | date:"d/MM/yyyy" }}</span>&nbsp;&nbsp;
+                                <div layout="row" layout-align="left center">
+                                    <i class="material-icons">&#xE425;</i>&nbsp;
+                                    <span>{{passage.duration | timeformat:"mm":"hh h mm m"}}</span>
+                                </div>
+                            </h3>
+                            <h4 style="margin-left:1em; font-weight:bold" layout="row" layout-align="left center">
+                                <div layout="row" layout-align="left center" style="color:#bb5050;" class="passage_ratings">
+                                    <i class="material-icons">&#xEB43;</i>&nbsp;
+                                    <span>{{passage.difficulty}} / 5</span>
+                                </div>&nbsp;
+                                <div layout="row" layout-align="left center" style="color:#00936f" class="passage_ratings"><i class="material-icons" >&#xE91D;</i>&nbsp;<span>{{passage.animal_density}} / 5</span></div>&nbsp;
+                                <div layout="row" layout-align="left center" style="color:#448aff" class="passage_ratings"><i class="material-icons">&#xE3F7;</i>&nbsp;<span>{{passage.landscape_beauty}} / 5</span></div>
+                            </h4>         
+                            <md-button class="md-icon-button md-raised md-warn"  ng-click="$ctrl.removePassageFromRando($ctrl.rando.id, passage);">
+                                    <i class="material-icons">&#xE14C;</i>           
+                            </md-button>        
+                            
+                        </div>
+                        <p>{{passage.comments}}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
             </md-card-content>
             <md-card-content layout="row" layout-align="end">
-                    <md-button class="md-icon-button md-raised md-primary" ng-click="$ctrl.showPrompt($ctrl.rando)"><i class="material-icons">&#xE145;</i></md-button>
+                <md-button class="md-icon-button md-raised md-primary" ng-click="$ctrl.showPrompt()"><i class="material-icons">&#xE145;</i></md-button>
             </md-card-content>
         </md-card>
         <md-card md-theme-watch>
@@ -92,19 +124,3 @@
         </md-card>
     </div>
 </md-content>
-
-<div style="visibility: hidden">
-<div class="md-dialog-container" id="myDialog">
-  <md-dialog layout-padding>
-    <h2>Pre-Rendered Dialog</h2>
-    <p>
-      This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
-      template on each opening.
-      <br/><br/>
-      The Dialog Element is a static element in the DOM, which is just visually hidden.<br/>
-      Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
-      we restore the element back into its old DOM position.
-    </p>
-  </md-dialog>
-</div>
-</div>

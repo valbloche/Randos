@@ -1,25 +1,38 @@
 <md-dialog>
-    <md-toolbar layout-align="center center">{{date | date:"d/MM/yyyy" }}</md-toolbar>
+    <md-toolbar layout-align="center center">{{ (passage ? passage.date : date) | date:"d/MM/yyyy" }}</md-toolbar>
     <md-dialog-content layout-padding>
         <h2 class="md-title">{{rando.name}}</h2>
-        <div>Bravo, tu as monté {{rando.denivele}} mètres.</div>
+        <div>Bravo, tu as monté, et descendu, {{rando.denivele}} mètres<span ng-show="passage.departure_hour && passage.arrival_hour">, en heure et minutes.</span></div>
         <div class="md-dialog-content">
-            <md-input-container class="md-block">
-                <label>Difficulté</label>
-                <input-stars max="5" ng-model="difficulty"></input-stars>
+            <md-input-container class="md-block hour-input-container" style="margin-top:0px">
+                <label for="">Heure de départ</label>
+                <input type="time" name="departure_hour" ng-model="passage.departure_hour"/>
             </md-input-container>
-            <md-input-container class="md-block">
+            <md-input-container class="md-block hour-input-container">
+                <label for="">Heure d'arrivée</label>
+                <input type="time" name="arrival_hour" ng-model="passage.arrival_hour"/>
+            </md-input-container>
+            <md-input-container class="md-block star-input-container">
+                <label>Difficulté</label>
+                <input-stars max="5" ng-model="passage.difficulty" value="passage.difficulty"></input-stars>
+            </md-input-container>
+            <md-input-container class="md-block star-input-container">
                 <label>Présence de zanimaux</label>
-                <input-stars max="5" ng-model="animals_density"></input-stars>
+                <input-stars max="5" ng-model="passage.animal_density"></input-stars>
+            </md-input-container>
+            <md-input-container class="md-block star-input-container">
+                <label>Paysage</label>
+                <input-stars max="5" ng-model="passage.landscape_beauty"></input-stars>
             </md-input-container>
         <md-input-container class="md-block">
             <label>Comment ça s'est passé ?</label>
-            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus placeholder="J'ai frôlé la mort à multiples reprises"></textarea>
+            <textarea ng-model="passage.comments" rows="5" md-select-on-focus placeholder="J'ai frôlé la mort à de multiples reprises">{{passage.comments}}</textarea>
         </md-input-container>
         </div>
     </md-dialog-content>
     <md-dialog-actions>
-        <md-button class="md-accent md-cancel-button" ng-click="cancel()">Je ne veux plus</md-button>
-        <md-button class="md-primary md-confirm-button" ng-click="hide()">Ça s'est passé comme ça</md-button>
+        <md-button class="md-cancel-button" ng-click="cancel()">ANNULER</md-button>
+        <md-button class="md-confirm-button md-primary" ng-click="answer()">Ça s'est passé comme ça</md-button>
     </md-dialog-actions>
+
 </md-dialog>

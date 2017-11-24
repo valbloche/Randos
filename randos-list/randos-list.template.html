@@ -1,4 +1,4 @@
-<div ng-controller="FilterController" ng-cloak>
+<md-toolbar ng-controller="FilterController" class="md-primary" ng-cloak layout="row" layout-align='center center'>
     <md-input-container >
         <label>Nom</label>
         <input name="name" maxlength="50" ng-model="filter_name"/>
@@ -40,7 +40,7 @@
         <md-slider class="md-primary" flex md-discrete ng-model="filter_duration" step="10" min="30" max="240" aria-label="rating">
         </md-slider>
     </md-input-container>
-</div>
+</md-toolbar>
 
 <md-list flex ng-show="$ctrl.randos">
     

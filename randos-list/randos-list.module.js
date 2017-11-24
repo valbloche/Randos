@@ -1,5 +1,5 @@
-angular.module('randosList', []).filter('timeformat', function() {
-    
+angular.module('randosList', ['rando-list.service'])
+.filter('timeformat', function() {
     
     var conversions = {
         'ss': angular.identity,
